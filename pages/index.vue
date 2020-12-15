@@ -1,73 +1,29 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        git-api-example
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <main class="welcome">
+    <div> {{ data }}</div>
+    <nuxt-link :to="`repos/${ data[0].fullname }`">
+      detail
+    </nuxt-link>
+  </main>
 </template>
 
 <script>
-export default {}
+
+import { fnSort, ASC } from '@/utilities'
+
+export default {
+  async asyncData ({ params, $axios }) {
+    const limit = 3; const sortkey = 'stargazers_count'; const url = '/users/homeday-de/repos'
+    let data = await $axios.$get(url)
+    data = data.length ? fnSort(ASC, sortkey, data).slice(0, limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
+    return { data }
+  },
+  data () {
+    return {
+    }
+  }
+}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
