@@ -1,0 +1,41 @@
+
+@each $modifier , $breakpoint in $map-grid-props {
+  @include create-container($modifier, $breakpoint);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &--fluid {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+
+  &.column {
+    flex-direction: column;
+  }
+}
+
+@each $modifier , $breakpoint in $map-grid-props {
+  @include create-col-classes($modifier, $grid-cols, $breakpoint);
+}
+
+[class*="col-"] {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+}
