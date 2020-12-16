@@ -50,5 +50,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  env: {
+    GIT_TOKEN: process.env.GIT_TOKEN
   }
 }
