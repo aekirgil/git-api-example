@@ -46,11 +46,12 @@ export default {
 .hero {
   width: 100%;
   height: 40vh;
-  padding: 70px;
   overflow: hidden;
-  background: no-repeat center center scroll;
+  background: no-repeat 50% scroll;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
 }
 </style>
