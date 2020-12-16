@@ -24,5 +24,6 @@ export default {
   min-height: 200px;
   box-shadow: 2px 6px 6px 0 rgb(215, 215, 215);
   background-color: white;
+  padding: 20px;
 }
 </style>
