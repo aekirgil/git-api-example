@@ -19,5 +19,6 @@ export default {
 <style lang="scss" scoped>
 .page {
   min-height: calc(100vh - 50px);
+  margin-bottom: 20px;
 }
 </style>
