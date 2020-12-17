@@ -19,11 +19,16 @@
 
 <script>
 export default {
-  async asyncData ({ params, $axios }) {
+  asyncData ({ params, $axios, error }) {
     const { user, reponame } = params
     const url = `/repos/${user}/${reponame}`
-    const repo = await $axios.$get(url)
-    return { repo }
+    return $axios.$get(url)
+      .then((repo) => {
+        return { repo }
+      })
+      .catch((err) => {
+        error({ statusCode: err.response.statusCode, message: err.response.message || 'Something went wrong' })
+      })
   },
   data () {
     return {
