@@ -20,15 +20,15 @@ context('Assertions', () => {
 
     it('check form validations', () => {
       cy.get('#form-submit-button').click()
-      cy.get('.error').its('length').should('to.be', 3)
+      cy.get('.form__error').its('length').should('to.be', 3)
       cy.get('#username').type('homeday-de', { delay: 100 })
       .should('have.value', 'homeday-de')
-      cy.get('.error').its('length').should('to.be', 2)
+      cy.get('.form__error').its('length').should('to.be', 2)
       cy.get('#email').type('a@a.com', { delay: 100 })
       .should('have.value', 'a@a.com')
-      cy.get('.error').its('length').should('to.be', 1)
+      cy.get('.form__error').its('length').should('to.be', 1)
       cy.get('#aggrement').check().should('be.checked')
-      cy.get('.error').should('not.exist');
+      cy.get('.form__error').should('not.exist');
     })
 
     it('fill up the form, click the button and check is boxes there or not', () => {
