@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="box__info">
-      <h4 class="box__info__title" :title="title">
+      <h4 class="box__title" :title="title">
         {{ title }}
       </h4>
       <slot />
@@ -33,7 +33,7 @@ export default {
     width: 100%;
     padding: 20px;
 
-    #{parent}__title {
+    #{$parent}__title {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
