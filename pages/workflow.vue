@@ -124,7 +124,12 @@ export default {
       const url = `/users/${user}/repos`
       try {
         const data = await this.$axios.$get(url)
-        return data.length ? fnSort(ASC, constants.sortKey, data).slice(0, constants.limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
+
+        if (!data.length) {
+          this.error = 'Cannot find any repository by the given information'
+          return []
+        }
+        return fnSort(ASC, constants.sortKey, data).slice(0, constants.limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), [])
       } catch (error) {
         this.error = 'Repository not found'
         return error
