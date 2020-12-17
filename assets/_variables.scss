@@ -1,0 +1,33 @@
+$grid-cols: 12;
+$grid-bp-sm: 576;
+$grid-bp-md: 768;
+$grid-bp-lg: 992;
+$grid-bp-xl: 1200;
+
+$grid-bp-w-sm: 540;
+$grid-bp-w-md: 720;
+$grid-bp-w-lg: 960;
+$grid-bp-w-xl: 1140;
+
+$map-grid-props: (
+  '': 0,
+  '-sm': $grid-bp-sm,
+  '-md': $grid-bp-md,
+  '-lg': $grid-bp-lg,
+  '-xl': $grid-bp-xl
+);
+$map-grid-widths: (
+  '-sm': $grid-bp-w-sm,
+  '-md': $grid-bp-w-md,
+  '-lg': $grid-bp-w-lg,
+  '-xl': $grid-bp-w-xl
+);
+
+$h4-size: 18px;
+$h3-size: 25px;
+$h2-size: 30px;
+$h1-size: 40px;
+
+$main-margin-top: 30px;
+$section-margin-top: 20px;
+$h1-margin-bottom: 40px;

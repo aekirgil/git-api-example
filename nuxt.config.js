@@ -14,10 +14,14 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    'normalize.css/normalize.css',
+    '~/assets/main.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/axios.js',
+    '~/plugins/vuelidate.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -36,9 +40,15 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'https://api.github.com'
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  env: {
+    GIT_TOKEN: process.env.GIT_TOKEN
   }
 }
