@@ -10,17 +10,17 @@
           <fieldset class="col-12 col-sm-6">
             <label for="username">User Name:</label>
             <input id="username" v-model="$v.form.username.$model" type="text" autocomplete="name">
-            <p v-if="isFormSubmitted && !$v.form.username.required" class="error">
+            <p v-if="isFormSubmitted && !$v.form.username.required" class="form__error">
               Please fill the username input
             </p>
           </fieldset>
           <fieldset class="col-12 col-sm-6">
             <label for="email">E-mail:</label>
             <input id="email" v-model="$v.form.email.$model" type="email" autocomplete="email">
-            <p v-if="isFormSubmitted && !$v.form.email.required" class="error">
+            <p v-if="isFormSubmitted && !$v.form.email.required" class="form__error">
               Please fill the email input
             </p>
-            <p v-if="!$v.form.email.email" class="error">
+            <p v-if="!$v.form.email.email" class="form__error">
               Please type correct email address
             </p>
           </fieldset>
@@ -29,7 +29,7 @@
               <input id="aggrement" v-model="$v.form.aggrement.$model" type="checkbox" name="aggrement">
               <label for="aggrement">Agree with terms and service</label>
             </div>
-            <p v-if="isFormSubmitted && !$v.form.aggrement.sameAs" class="error">
+            <p v-if="isFormSubmitted && !$v.form.aggrement.sameAs" class="form__error">
               Please check the agreement input
             </p>
           </fieldset>
@@ -141,9 +141,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h4 {
-  margin-top: 10px;
-}
 .form {
   fieldset {
     display: flex;
@@ -168,10 +165,11 @@ h4 {
       width: 20px;
       margin-right: 10px;
     }
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
+  }
+
+  &__error {
+    color: red;
+    margin-top: 10px;
   }
 }
 </style>

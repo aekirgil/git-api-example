@@ -1,6 +1,8 @@
 <template>
   <div class="list">
-    <h3>{{ headline }}</h3>
+    <h3 class="list__title">
+      {{ headline }}
+    </h3>
     <slot />
   </div>
 </template>
@@ -20,7 +22,7 @@ export default {
 .list {
   width: 100%;
 
-  h3 {
+  &__title {
     margin-bottom: 20px;
   }
 }

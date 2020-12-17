@@ -1,12 +1,12 @@
 <template>
-  <nav>
-    <ul>
-      <li>
+  <nav class="navigation">
+    <ul class="navigation__list">
+      <li class="navigation__item">
         <nuxt-link exact to="/">
           Welcome
         </nuxt-link>
       </li>
-      <li>
+      <li class="navigation__item">
         <nuxt-link exact to="/workflow">
           Workflow
         </nuxt-link>
@@ -15,11 +15,9 @@
   </nav>
 </template>
 
-<script>
-export default {}
-</script>
 <style lang="scss" scoped>
-nav {
+.navigation {
+  $parent: &;
   min-height: 50px;
   padding: 5px 60px;
   background: black;
@@ -29,20 +27,20 @@ nav {
   display: flex;
   justify-content: space-between;
 
-  a {
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
-  }
-
-  ul {
+  #{$parent}__list {
     display: flex;
     align-items: center;
     list-style: none;
     padding: 0;
 
-    li {
+    #{$parent}__item {
       padding-right: 40px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 25px;
+      }
     }
   }
 }
