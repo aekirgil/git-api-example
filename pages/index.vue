@@ -36,13 +36,13 @@ import Box from '@/components/Box'
 import List from '@/components/List'
 
 import { fnSort, ASC } from '@/utilities'
+import constant from '@/utilities/constant'
 
 export default {
   components: { Hero, Box, List },
   async asyncData ({ params, $axios }) {
-    const limit = 3; const sortkey = 'stargazers_count'; const url = '/users/homeday-de/repos'
-    let data = await $axios.$get(url)
-    data = data.length ? fnSort(ASC, sortkey, data).slice(0, limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
+    let data = await $axios.$get(constant.homeUrl)
+    data = data.length ? fnSort(ASC, constant.sortKey, data).slice(0, constant.limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
     return { data }
   },
   data () {

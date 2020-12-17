@@ -3,7 +3,7 @@
     <div class="container">
       <section>
         <h1>Workflow</h1>
-        <h3>Please fill the form and get your top 3 repository</h3>
+        <h3>Please fill the form and get your top {{ limit }} repository</h3>
       </section>
       <section class="form">
         <form class="row column" @submit.prevent="formSubmit">
@@ -74,14 +74,14 @@ import Box from '@/components/Box'
 import Empty from '@/components/Empty'
 
 import { fnSort, ASC } from '@/utilities'
+import constant from '@/utilities/constant'
 
 export default {
   components: { Box, List, Empty },
   data () {
     return {
       headline: 'Repository List',
-      limit: 3,
-      sortkey: 'stargazers_count',
+      limit: constant.limit,
       repos: [],
       form: {
         username: '',
@@ -120,13 +120,11 @@ export default {
       }
     },
     async getData (user) {
-      const limit = 3
-      const sortkey = 'stargazers_count'
       const url = `/users/${user}/repos`
 
       try {
         const data = await this.$axios.$get(url)
-        return data.length ? fnSort(ASC, sortkey, data).slice(0, limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
+        return data.length ? fnSort(ASC, constant.sortKey, data).slice(0, constant.limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
       } catch (error) {
         throw (new Error(`Fetch error in "workflow" page. Error: ${error}`))
       }
