@@ -10,14 +10,14 @@
           <fieldset class="col-12 col-sm-6">
             <label for="username">User Name:</label>
             <input id="username" v-model="$v.form.username.$model" type="text" autocomplete="name">
-            <p v-if="formsubmited && !$v.form.username.required" class="error">
+            <p v-if="isFormSubmitted && !$v.form.username.required" class="error">
               Please fill the username input
             </p>
           </fieldset>
           <fieldset class="col-12 col-sm-6">
             <label for="email">E-mail:</label>
             <input id="email" v-model="$v.form.email.$model" type="email" autocomplete="email">
-            <p v-if="formsubmited && !$v.form.email.required" class="error">
+            <p v-if="isFormSubmitted && !$v.form.email.required" class="error">
               Please fill the email input
             </p>
             <p v-if="!$v.form.email.email" class="error">
@@ -29,7 +29,7 @@
               <input id="aggrement" v-model="$v.form.aggrement.$model" type="checkbox" name="aggrement">
               <label for="aggrement">Agree with terms and service</label>
             </div>
-            <p v-if="formsubmited && !$v.form.aggrement.sameAs" class="error">
+            <p v-if="isFormSubmitted && !$v.form.aggrement.sameAs" class="error">
               Please check the agreement input
             </p>
           </fieldset>
@@ -88,7 +88,7 @@ export default {
         email: '',
         aggrement: false
       },
-      formsubmited: false
+      isFormSubmitted: false
     }
   },
   validations: {
@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     async formSubmit () {
-      this.formsubmited = true
+      this.isFormSubmitted = true
       if (!this.$v.form.$invalid) {
         const formData = {
           username: this.$v.form.username.$model,
@@ -130,7 +130,7 @@ export default {
       }
     },
     formReset () {
-      this.formsubmited = false
+      this.isFormSubmitted = false
       this.form.username = ''
       this.form.email = ''
       this.form.aggrement = false
