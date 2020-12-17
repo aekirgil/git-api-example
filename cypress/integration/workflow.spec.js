@@ -19,7 +19,7 @@ context('Assertions', () => {
     })
 
     it('check form validations', () => {
-      cy.get('#button').click()
+      cy.get('#form-submit-button').click()
       cy.get('.error').its('length').should('to.be', 3)
       cy.get('#username').type('homeday-de', { delay: 100 })
       .should('have.value', 'homeday-de')
@@ -39,7 +39,7 @@ context('Assertions', () => {
       cy.get('#email').type('a@a.com', { delay: 100 })
       .should('have.value', 'a@a.com')
       cy.get('#aggrement').check().should('be.checked')
-      cy.get('#button').click()
+      cy.get('#form-submit-button').click()
       cy.get('.list').its('length').should('to.be', 1)
       cy.get('.box').its('length').should('be.gt', 2)
     })

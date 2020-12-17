@@ -34,7 +34,7 @@
             </p>
           </fieldset>
           <fieldset class="col-12 col-sm-3">
-            <button id="button">
+            <button id="form-submit-button">
               Get Repositories
             </button>
           </fieldset>
