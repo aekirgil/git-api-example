@@ -30,11 +30,14 @@ html {
 }
 
 h1, h2, h3, h4 {
-  text-transform: capitalize;
   font-style: normal;
   font-weight: bold;
   color: black;
   line-height: 1;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
 
 h1 {
