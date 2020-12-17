@@ -59,8 +59,8 @@
           </div>
         </List>
       </section>
-      <section v-else>
-        <Empty text="Cannot find any repository by the given information" />
+      <section v-else-if="error">
+        <Empty :text="error" />
       </section>
     </div>
   </main>
@@ -74,15 +74,16 @@ import Box from '@/components/Box'
 import Empty from '@/components/Empty'
 
 import { fnSort, ASC } from '@/utilities'
-import constant from '@/utilities/constant'
+import constants from '@/utilities/constants'
 
 export default {
   components: { Box, List, Empty },
   data () {
     return {
       headline: 'Repository List',
-      limit: constant.limit,
+      limit: constants.limit,
       repos: [],
+      error: '',
       form: {
         username: '',
         email: '',
@@ -121,12 +122,12 @@ export default {
     },
     async getData (user) {
       const url = `/users/${user}/repos`
-
       try {
         const data = await this.$axios.$get(url)
-        return data.length ? fnSort(ASC, constant.sortKey, data).slice(0, constant.limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
+        return data.length ? fnSort(ASC, constants.sortKey, data).slice(0, constants.limit).reduce((ac, cur) => ([...ac, { name: cur.name, fullname: cur.full_name, id: cur.id }]), []) : []
       } catch (error) {
-        throw (new Error(`Fetch error in "workflow" page. Error: ${error}`))
+        this.error = 'Repository not found'
+        return error
       }
     },
     formReset () {
