@@ -34,7 +34,7 @@ export default {
         },
         buttonUrl: {
           type: String,
-          default: 'asd'
+          default: ''
         }
       })
     }

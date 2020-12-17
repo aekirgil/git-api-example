@@ -3,7 +3,7 @@
     <div class="container">
       <section>
         <h1>Workflow</h1>
-        <h3>Please fill the form and get your top {{ limit }} repository</h3>
+        <h3>Please fill the form and get your top {{ limit }} repositories</h3>
       </section>
       <section class="form">
         <form class="row column" @submit.prevent="formSubmit">
